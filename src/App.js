@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import { Container, Grid } from '@material-ui/core/';
 import { makeStyles } from '@material-ui/core/styles';
-import Header from './components/Main/Header';
 import URLInput from './components/URLInput/URLInput';
 import DisplayResults from './components/Results/displayResults';
 
@@ -33,7 +32,7 @@ const classes = useStyles();
     <div className="App">
       <Container fixed>
         <div className={classes.containerStyle}>
-          <Header />
+          
     
     {!request
     ?
