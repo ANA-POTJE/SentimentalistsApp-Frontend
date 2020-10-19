@@ -67,12 +67,19 @@ function URLInput(props) {
     handleSubmit();
   };
 
+  const doSomethingElse = () => {
+    alert('doing something else')
+  }
+
   // won't call a function, why?
 const handleKeyPress = (event) => {
   if (event.key === 'Enter'){
-alert('enter was pressed')
+alert('enter was pressed');
+doSomethingElse();
+
   }
 }
+
 
 
 
