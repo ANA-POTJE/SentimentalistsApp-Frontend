@@ -37,34 +37,40 @@ function URLInput(props) {
   const handleTextChange = (event) => {
     setText(event.target.value);
   };
+const handleSubmit =  () => {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url: text }),
+  };
 
+  fetch('https://q4udqluuqd.execute-api.eu-west-2.amazonaws.com/test/analysis', requestOptions)
+  .then(async response => {
+      const data = await response.json();
+
+      // check for error response
+      if (!response.ok) {
+        // get error message from body or default to response status
+        const error = (data && data.message) || response.status;
+        return Promise.reject(error);
+      }
+
+      props.setRequest(JSON.parse(data));
+    })
+    .catch((error) => {
+      console.error("There was an error!", error);
+    });
+}
   const handleClick = () => {
-    
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: text }),
-    };
-
-    fetch('https://q4udqluuqd.execute-api.eu-west-2.amazonaws.com/test/analysis', requestOptions)
-    .then(async response => {
-        const data = await response.json();
-
-        // check for error response
-        if (!response.ok) {
-          // get error message from body or default to response status
-          const error = (data && data.message) || response.status;
-          return Promise.reject(error);
-        }
-
-        props.setRequest(JSON.parse(data));
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
+    handleSubmit();
   };
 
   
+// calls the function and it goes, but doesn't stay.
+useKeypress('Enter', () => {
+  handleSubmit();
+})
+
 
 
   return (
