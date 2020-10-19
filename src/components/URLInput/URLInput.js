@@ -37,7 +37,9 @@ function URLInput(props) {
   const handleTextChange = (event) => {
     setText(event.target.value);
   };
-const handleSubmit =  () => {
+
+
+  const handleSubmit =  () => {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -65,11 +67,12 @@ const handleSubmit =  () => {
     handleSubmit();
   };
 
-  
-// calls the function and it goes, but doesn't stay.
-useKeypress('Enter', () => {
-  handleSubmit();
-})
+  // won't call a function, why?
+const handleKeyPress = (event) => {
+  if (event.key === 'Enter'){
+alert('enter was pressed')
+  }
+}
 
 
 
@@ -93,6 +96,7 @@ useKeypress('Enter', () => {
               variant="outlined"
               value={text}
               onChange={handleTextChange}
+              onKeyPress={handleKeyPress}
               color="secondary"
             ></Textfield>
           </Grid>
