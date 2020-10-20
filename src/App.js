@@ -28,10 +28,13 @@ const useStyles = makeStyles({
 
 function App() {
 const classes = useStyles();
+useEffect(() => {
+  console.log('render');
+})
 
  //request
  const [request, setRequest] = useState("");
- useEffect()
+ 
  
  
 
