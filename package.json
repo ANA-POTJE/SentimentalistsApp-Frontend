@@ -11,7 +11,8 @@
     "react-dom": "^16.13.1",
     "react-gauge-chart": "^0.2.5",
     "react-scripts": "3.4.3",
-    "react-textfit": "^1.1.0"
+    "react-textfit": "^1.1.0",
+    "react-use-keypress": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

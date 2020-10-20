@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core";
 import "./URLinput.css";
 import Header from '../Main/Header';
-import useKeyPress from '../URLInput/useKeyPress';
+import useKeypress from 'react-use-keypress';
 /* resolve CSS */
 /*error toggle needs implementing*/
 /*Button onClick needs to hide input and open results*/
@@ -39,8 +39,8 @@ function URLInput(props) {
     setText(event.target.value);
   };
 
-  useKeyPress('Enter', () => {
-    handleSubmit();
+  useKeypress('Enter', () => {
+    alert('enter was pressed')
   })
 
   const handleSubmit = function (event) {
