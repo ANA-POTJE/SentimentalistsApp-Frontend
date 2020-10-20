@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Textfit from "react-textfit";
 import "../../App.css";
+import DisplayResultsHeader from '../Results/displayResultsHeader';
 
 const useStyles = makeStyles({
   mainGaugeHeading: {
@@ -41,7 +42,8 @@ function DisplayResults(props) {
 
   return (
     <div>
-      <Grid container justify="center">
+      <Grid style={{border: "2px solid blue"}} container justify="center">
+          <DisplayResultsHeader />
         <Grid item xs={12} sm={10}>
           <Typography variant="h5" className={classes.mainGaugeHeading}>
             Credibility Score

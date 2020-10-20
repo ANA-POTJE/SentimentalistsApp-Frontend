@@ -66,6 +66,7 @@ function URLInput(props) {
   return (
     <div>
       <Header />
+  <p>{props.displayExample}</p>
       <Grid
         container
         direction="column"

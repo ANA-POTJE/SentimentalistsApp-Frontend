@@ -26,6 +26,8 @@ const useStyles = makeStyles({
 })
 
 
+const example = "some text";
+
 function App() {
 const classes = useStyles();
 
@@ -41,7 +43,7 @@ const classes = useStyles();
           <div className={classes.innerContainer}>
     {!request
     ?
-      <URLInput setRequest={ setRequest }/>
+      <URLInput displayExample={example} setRequest={ setRequest }/>
     :
     
       <div>
@@ -54,7 +56,9 @@ const classes = useStyles();
 
       <Grid container className={classes.footer}>
        <Grid item xs={12}>
+       
          <h5>The Sentimentalists &copy; 2020</h5>
+         
        </Grid>
         </Grid>
 
