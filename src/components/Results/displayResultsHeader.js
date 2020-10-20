@@ -20,7 +20,7 @@ const classes = useStyles();
             justify="flex-start"
             direction="row"
             >
-            <h1 className={classes.mainHeading}>The Sentimenalists</h1>
+            <h1 className={classes.mainHeading}>The Sentimentalists</h1>
             <h3>Analysing Sentiment Since 2020</h3>
             </Grid>
             </div>
