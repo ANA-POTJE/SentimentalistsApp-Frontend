@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core";
 import "./URLinput.css";
 import Header from '../Main/Header';
-import useKeypress from 'react-use-keypress';
+
 /* resolve CSS */
 /*error toggle needs implementing*/
 /*Button onClick needs to hide input and open results*/
@@ -63,7 +63,7 @@ function URLInput(props) {
       console.error("There was an error!", error);
     });
 }
-  const handleClick = () => {
+ /* const handleClick = () => {
     handleSubmit();
   };
 
@@ -79,7 +79,7 @@ alert('enter was pressed');
 doSomethingElse();
 
   }
-}
+}*/
 
 
 
@@ -104,7 +104,7 @@ doSomethingElse();
               variant="outlined"
               value={text}
               onChange={handleTextChange}
-              onKeyPress={handleKeyPress}
+              onKeyPress={handleSubmit}
               color="secondary"
             ></Textfield>
           </Grid>
@@ -113,7 +113,7 @@ doSomethingElse();
             className={classes.inputButton}
             size="large"
             variant="contained"
-            onClick={handleClick}
+            onClick={handleSubmit}
             disableElevation
           >
             Analyse
