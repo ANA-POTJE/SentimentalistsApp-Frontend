@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core";
 import "./URLinput.css";
 import Header from '../Main/Header';
+import useKeyPress from '../URLInput/useKeyPress';
 /* resolve CSS */
 /*error toggle needs implementing*/
 /*Button onClick needs to hide input and open results*/
@@ -30,15 +31,20 @@ const useStyles = makeStyles(() => ({
 }));
 
 function URLInput(props) {
+  const classes = useStyles();  
   const [text, setText] = useState("");
-  const classes = useStyles();
+  
 
   const handleTextChange = (event) => {
     setText(event.target.value);
   };
 
-  const handleSubmit = () => {
-    
+  useKeyPress('Enter', () => {
+    handleSubmit();
+  })
+
+  const handleSubmit = function (event) {
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -46,7 +52,7 @@ function URLInput(props) {
     };
 
     fetch('https://q4udqluuqd.execute-api.eu-west-2.amazonaws.com/test/analysis', requestOptions)
-    .then(async response => {
+      .then(async (response) => {
         const data = await response.json();
 
         // check for error response
@@ -61,6 +67,8 @@ function URLInput(props) {
       .catch((error) => {
         console.error("There was an error!", error);
       });
+
+    event.preventDefault();
   };
 
   return (
