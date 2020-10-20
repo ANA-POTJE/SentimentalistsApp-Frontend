@@ -4,7 +4,7 @@ import Textfield from "@material-ui/core/Textfield";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core";
 import "./URLinput.css";
-import Header from '../Main/Header';
+import Header from "../Main/Header";
 
 /* resolve CSS */
 /*error toggle needs implementing*/
@@ -38,51 +38,43 @@ function URLInput(props) {
     setText(event.target.value);
   };
 
-
-  const handleSubmit =  () => {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url: text }),
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      alert("enter was pressed");
+      handleSubmit();
+    }
   };
 
-  fetch('https://q4udqluuqd.execute-api.eu-west-2.amazonaws.com/test/analysis', requestOptions)
-  .then(async response => {
-      const data = await response.json();
+  const handleSubmit = () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: text }),
+    };
 
-      // check for error response
-      if (!response.ok) {
-        // get error message from body or default to response status
-        const error = (data && data.message) || response.status;
-        return Promise.reject(error);
-      }
+    fetch(
+      "https://q4udqluuqd.execute-api.eu-west-2.amazonaws.com/test/analysis",
+      requestOptions
+    )
+      .then(async (response) => {
+        const data = await response.json();
 
-      props.setRequest(JSON.parse(data));
-    })
-    .catch((error) => {
-      console.error("There was an error!", error);
-    });
-}
- /* const handleClick = () => {
-    handleSubmit();
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+        }
+
+        props.setRequest(JSON.parse(data));
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
   };
 
-  const doSomethingElse = () => {
-    alert('doing something else')
-    handleSubmit();
-  }
-
-  // won't call a function, why?
-const handleKeyPress = (event) => {
-  if (event.key === 'Enter'){
-alert('enter was pressed');
-doSomethingElse();
-
-  }
-}*/
-
-
-
+  
+  
 
   return (
     <div>
@@ -104,7 +96,7 @@ doSomethingElse();
               variant="outlined"
               value={text}
               onChange={handleTextChange}
-              onKeyPress={handleSubmit}
+              onKeyPress={(event) => handleKeyPress(event)}
               color="secondary"
             ></Textfield>
           </Grid>
