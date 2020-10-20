@@ -69,6 +69,7 @@ function URLInput(props) {
 
   const doSomethingElse = () => {
     alert('doing something else')
+    handleSubmit();
   }
 
   // won't call a function, why?
